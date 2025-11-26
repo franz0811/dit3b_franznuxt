@@ -19,9 +19,10 @@
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
-          <v-list-item to="/" prepend-icon="mdi-folder" title="My Files" value="myfiles"></v-list-item>
+          <v-list-item to="/" prepend-icon="mdi mdi-view-dashboard" title="Dashboar" value="dashboard"></v-list-item>
           <v-list-item to="/Inventory" prepend-icon="mdi mdi-list-box" title="Inventory" value="shared"></v-list-item>
-          <v-list-item prepend-icon="mdi mdi-account-cash" title="Account Cash" value="Account"></v-list-item>
+          <v-list-item to="/Category"prepend-icon="mdi mdi-account-group-outline" title="Category" value="category"></v-list-item>
+          <v-list-item to="/Users"prepend-icon="mdi mdi-account-group-outline" title="Users" value="user"></v-list-item>
         </v-list>
       </v-navigation-drawer>
 

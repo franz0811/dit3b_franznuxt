@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <v-card
-    title="Nutrition"
+  <v-card
+    title="Invetory"
     flat
   >
     <template v-slot:text>
@@ -17,31 +16,26 @@
 
     <v-data-table
       :headers="headers"
-      :items="desserts"
+      :items="inventory.data"
       :search="search"
     ></v-data-table>
   </v-card>
-  </div>
 </template>
-
 <script setup>
-const search = ref('')
+
+  const search = ref('')
+  const { data: inventory } = await useFetch('http://localhost:1337/api/inventories');
   const headers = [
-    {
-      align: 'start',
-      key: 'name',
-      sortable: false,
-      title: 'Dessert (100g serving)',
-    },
-    { key: 'calories', title: 'Calories' },
-    { key: 'fat', title: 'Fat (g)' },
-    { key: 'carbs', title: 'Carbs (g)' },
-    { key: 'protein', title: 'Protein (g)' },
-    { key: 'iron', title: 'Iron (%)' },
-  ]
-
+    { key: 'product_name', title: 'Product' },
+    { key: 'prouct_description', title: 'Description' },
+    { key: 'quantity', title: 'Quantity' },
+    { key: 'unit', title: 'Unit' },
+    { key: 'condition', title: 'Conditon' },
+    { key: 'location', title: 'Quantity' },
+    { key: 'acquisition_date', title: 'Acquisition Date' },
+    { key: 'acquisition_cost', title: 'Acquisition Cost' },
+    { key: 'total_cost', title: 'Total cost' },
+    { key: 'remarks', title: 'Remarks' },
+    { key: 'category', title: 'Category' },
+  ];
 </script>
-
-<style>
-
-</style>
