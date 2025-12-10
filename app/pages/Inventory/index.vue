@@ -1,6 +1,6 @@
 <template>
   <v-card
-    title="Invetory"
+    title="Inventory"
     flat
   >
     <template v-slot:text>
@@ -13,6 +13,15 @@
         single-line
       ></v-text-field>
     </template>
+    <!-- Selectable Category -->
+     <v-select
+  clearable
+  label="Select Category"
+  :items="category.data"
+  item-title="category_name"
+  item-value="id"
+  variant="outlined"
+></v-select>
 
     <v-data-table
       :headers="headers"
@@ -22,20 +31,24 @@
   </v-card>
 </template>
 <script setup>
+  import { ref } from 'vue'
 
   const search = ref('')
-  const { data: inventory } = await useFetch('http://localhost:1337/api/inventories');
+  const { data: inventory } = await useFetch('http://localhost:1337/api/inventories?populate=category');
+
+  const { data: category } = await useFetch('http://localhost:1337/api/categories');
   const headers = [
-    { key: 'product_name', title: 'Product' },
-    { key: 'prouct_description', title: 'Description' },
+
+
+    { key: 'product_name', title: 'Project Name' },
+    { key: 'product_description', title: 'Description' },
     { key: 'quantity', title: 'Quantity' },
     { key: 'unit', title: 'Unit' },
-    { key: 'condition', title: 'Conditon' },
-    { key: 'location', title: 'Quantity' },
+    { key: 'condition', title: 'Condition' },
+    { key: 'location', title: 'Location' },
     { key: 'acquisition_date', title: 'Acquisition Date' },
     { key: 'acquisition_cost', title: 'Acquisition Cost' },
-    { key: 'total_cost', title: 'Total cost' },
+    { key: 'total_cost', title: 'Total Cost' },
     { key: 'remarks', title: 'Remarks' },
-    { key: 'category', title: 'Category' },
   ];
 </script>
