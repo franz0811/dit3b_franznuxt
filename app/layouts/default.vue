@@ -10,6 +10,7 @@
       >
         <v-list>
           <v-list-item
+           to="/dashboard"
             prepend-avatar="https://i.pinimg.com/736x/4b/e6/7f/4be67f67f0fca883770e96112711ecbe.jpg"
             subtitle="franznavarro260@gmail.com"
             title="Franz Navarro"
@@ -20,9 +21,9 @@
 
         <v-list density="compact" nav>
           <v-list-item to="/" prepend-icon="mdi mdi-view-dashboard" title="Dashboar" value="dashboard"></v-list-item>
-          <v-list-item to="/Inventory" prepend-icon="mdi mdi-list-box" title="Inventory" value="shared"></v-list-item>
-          <v-list-item to="/Category"prepend-icon="mdi mdi-account-group-outline" title="Category" value="category"></v-list-item>
-          <v-list-item to="/Users"prepend-icon="mdi mdi-account-group-outline" title="Users" value="user"></v-list-item>
+          <v-list-item to="/inventory" prepend-icon="mdi mdi-list-box" title="Inventory" value="shared"></v-list-item>
+          <v-list-item to="/category"prepend-icon="mdi mdi-account-group-outline" title="Category" value="category"></v-list-item>
+          <v-list-item to="/users"prepend-icon="mdi mdi-account-group-outline" title="Users" value="user"></v-list-item>
         </v-list>
       </v-navigation-drawer>
 

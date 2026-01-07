@@ -15,6 +15,7 @@
     </template>
     <!-- Selectable Category -->
      <v-select
+  v-model="selectedCategory"
   clearable
   label="Select Category"
   :items="category.data"
@@ -25,15 +26,16 @@
 
     <v-data-table
       :headers="headers"
-      :items="inventory.data"
+      :items="filteredInventory"
       :search="search"
     ></v-data-table>
   </v-card>
 </template>
 <script setup>
-  import { ref } from 'vue'
 
   const search = ref('')
+  const selectedCategory = ref(null);
+
   const { data: inventory } = await useFetch('http://localhost:1337/api/inventories?populate=category');
 
   const { data: category } = await useFetch('http://localhost:1337/api/categories');
@@ -51,4 +53,16 @@
     { key: 'total_cost', title: 'Total Cost' },
     { key: 'remarks', title: 'Remarks' },
   ];
+
+  const filteredInventory = computed(() => {
+    if(!selectedCategory.value){
+      return inventory.value.data;
+
+    }else{
+      return inventory.value.data.filter(item => item.category.id === selectedCategory.value);
+
+    }
+  });
+
+
 </script>
